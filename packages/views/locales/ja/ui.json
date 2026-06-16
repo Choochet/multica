@@ -4,5 +4,7 @@
   "pagination_previous": "前のページへ移動",
   "pagination_next": "次のページへ移動",
   "copy_code": "コードをコピー",
-  "plain_text": "プレーンテキスト"
+  "plain_text": "プレーンテキスト",
+  "copy_id_tooltip": "ID をコピー",
+  "id_copied": "ID をコピーしました"
 }

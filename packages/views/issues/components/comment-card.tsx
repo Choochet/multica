@@ -497,6 +497,14 @@ function CommentRow({
                 <Copy className="h-3.5 w-3.5" />
                 {t(($) => $.comment.copy_action)}
               </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => {
+                void copyText(entry.id).then((ok) => {
+                  if (ok) toast.success(t(($) => $.comment.copy_id_toast));
+                });
+              }}>
+                <Copy className="h-3.5 w-3.5" />
+                {t(($) => $.comment.copy_id_action)}
+              </DropdownMenuItem>
               {onResolveToggle && (
                 <>
                   <DropdownMenuSeparator />

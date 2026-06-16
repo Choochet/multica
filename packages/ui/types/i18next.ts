@@ -23,6 +23,8 @@ declare global {
       pagination_next: string;
       copy_code: string;
       plain_text: string;
+      copy_id_tooltip: string;
+      id_copied: string;
     };
   }
 }

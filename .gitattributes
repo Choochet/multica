@@ -4,3 +4,5 @@ docker/entrypoint.sh text eol=lf
 
 # Default behavior
 * text=auto
+
+note.md

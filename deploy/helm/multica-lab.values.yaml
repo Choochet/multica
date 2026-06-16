@@ -1,0 +1,31 @@
+# Lab override values for multica.lab localhost access.
+# Usage:
+#   helm upgrade --install multica deploy/helm/multica \
+#     -n multica -f deploy/helm/multica-lab.values.yaml
+
+ingress:
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: localhost-ca
+  frontend:
+    host: multica.lab
+  backend:
+    host: api.multica.lab
+  tls:
+    - hosts:
+        - multica.lab
+        - api.multica.lab
+      secretName: multica-lab-tls
+
+backend:
+  config:
+    # development mode: enables the fixed MULTICA_DEV_VERIFICATION_CODE so
+    # email (Resend) is not required. Safe only when the instance is not
+    # publicly reachable — do NOT use in production or on internet-facing hosts.
+    appEnv: development
+    appUrl: https://multica.lab
+    frontendOrigin: https://multica.lab
+    # Required so auth cookies set by api.multica.lab are accessible on multica.lab.
+    cookieDomain: multica.lab
+    googleRedirectUri: https://multica.lab/auth/callback
+    localUploadBaseUrl: https://api.multica.lab

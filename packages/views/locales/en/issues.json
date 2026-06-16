@@ -277,8 +277,6 @@
     "cancel_edit": "Cancel",
     "copy_action": "Copy",
     "copied_toast": "Copied",
-    "copy_id_action": "Copy ID",
-    "copy_id_toast": "Comment ID copied",
     "edit_action": "Edit",
     "update_failed": "Failed to update comment",
     "send_failed": "Failed to send comment",

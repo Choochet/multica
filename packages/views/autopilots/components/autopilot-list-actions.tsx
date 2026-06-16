@@ -31,6 +31,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@multica/ui/components/ui/dropdown-menu";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { useT } from "../../i18n";
 
 // ---------------------------------------------------------------------------
@@ -164,6 +165,7 @@ export function AutopilotRowActions({ row }: { row: Autopilot }) {
           }
         />
         <DropdownMenuContent align="end" className="w-48">
+          <CopyIdMenuItem id={row.id} />
           {row.status === "active" && (
             <DropdownMenuItem onClick={() => setStatus([row], "paused")}>
               <Pause className="size-3.5" />

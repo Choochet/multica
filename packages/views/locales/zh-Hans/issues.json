@@ -275,8 +275,6 @@
     "cancel_edit": "取消",
     "copy_action": "复制",
     "copied_toast": "已复制",
-    "copy_id_action": "复制 ID",
-    "copy_id_toast": "评论 ID 已复制",
     "edit_action": "编辑",
     "update_failed": "更新评论失败",
     "send_failed": "发送评论失败",

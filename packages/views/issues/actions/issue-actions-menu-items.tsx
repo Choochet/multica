@@ -8,6 +8,7 @@ import {
   ArrowUp,
   Calendar,
   CalendarClock,
+  Copy,
   FolderOpen,
   Link2,
   MoreHorizontal,
@@ -97,6 +98,7 @@ export function IssueActionsMenuItems({
   onDeletedNavigateTo,
 }: IssueActionsMenuItemsProps) {
   const { t } = useT("issues");
+  const { t: tUi } = useT("ui");
   const {
     isPinned,
     updateField,
@@ -260,6 +262,16 @@ export function IssueActionsMenuItems({
       <P.Item onClick={copyLink}>
         <Link2 className="h-3.5 w-3.5" />
         {t(($) => $.actions.copy_link)}
+      </P.Item>
+      <P.Item
+        onClick={() => {
+          void copyText(issue.id).then((ok) => {
+            if (ok) toast.success(tUi(($) => $.id_copied));
+          });
+        }}
+      >
+        <Copy className="h-3.5 w-3.5" />
+        {tUi(($) => $.copy_id_action)}
       </P.Item>
       <P.Item onClick={handleCopyWorkdirPath}>
         <FolderOpen className="h-3.5 w-3.5" />

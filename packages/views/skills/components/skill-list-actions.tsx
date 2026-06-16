@@ -45,6 +45,7 @@ import {
 } from "@multica/ui/components/ui/tooltip";
 import { ActorAvatar } from "@multica/ui/components/common/actor-avatar";
 import { cn } from "@multica/ui/lib/utils";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { useT } from "../../i18n";
 import type { SkillRow } from "./skills-page";
 
@@ -504,6 +505,7 @@ export function SkillRowActions({
           }
         />
         <DropdownMenuContent align="end" className="w-52">
+          <CopyIdMenuItem id={row.skill.id} />
           <DropdownMenuItem onClick={() => setAddOpen(true)}>
             <Plus className="size-3.5" />
             {t(($) => $.actions.add_to_agent)}

@@ -38,6 +38,7 @@ import { filterIssues } from "../../issues/utils/filter";
 import { getProjectIssueMetrics } from "./project-issue-metrics";
 import { filterRunningAssigneeGroups } from "./project-issue-filters";
 import { ActorAvatar } from "../../common/actor-avatar";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { useNavigation } from "../../navigation";
 import { TitleEditor, ContentEditor, type ContentEditorRef } from "../../editor";
 import { PriorityIcon } from "../../issues/components/priority-icon";
@@ -781,6 +782,7 @@ export function ProjectDetail({ projectId }: { projectId: string }) {
                     <Link2 className="h-3.5 w-3.5" />
                     {t(($) => $.detail.copy_link)}
                   </DropdownMenuItem>
+                  <CopyIdMenuItem id={project.id} />
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     variant="destructive"

@@ -25,6 +25,7 @@ import {
 } from "@multica/ui/components/ui/alert-dialog";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@multica/ui/components/ui/collapsible";
 import { ActorAvatar } from "../../common/actor-avatar";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { ReactionBar } from "@multica/ui/components/common/reaction-bar";
 import { cn } from "@multica/ui/lib/utils";
 import { copyText } from "@multica/ui/lib/clipboard";
@@ -497,14 +498,7 @@ function CommentRow({
                 <Copy className="h-3.5 w-3.5" />
                 {t(($) => $.comment.copy_action)}
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {
-                void copyText(entry.id).then((ok) => {
-                  if (ok) toast.success(t(($) => $.comment.copy_id_toast));
-                });
-              }}>
-                <Copy className="h-3.5 w-3.5" />
-                {t(($) => $.comment.copy_id_action)}
-              </DropdownMenuItem>
+              <CopyIdMenuItem id={entry.id} />
               {onResolveToggle && (
                 <>
                   <DropdownMenuSeparator />

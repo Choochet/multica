@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Crown, Shield, User, Plus, MoreHorizontal, UserMinus, Users, Clock, X, Mail } from "lucide-react";
 import { ActorAvatar } from "../../common/actor-avatar";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import type { MemberWithUser, MemberRole, Invitation } from "@multica/core/types";
 import { Input } from "@multica/ui/components/ui/input";
 import { Button } from "@multica/ui/components/ui/button";
@@ -118,6 +119,7 @@ function MemberRow({
             }
           />
           <DropdownMenuContent align="end" className="w-auto">
+            <CopyIdMenuItem id={member.user_id} />
             {canEditRole && (
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>

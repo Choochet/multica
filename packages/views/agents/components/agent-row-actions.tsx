@@ -33,6 +33,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@multica/ui/components/ui/dropdown-menu";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { useT } from "../../i18n";
 
 interface AgentRowActionsProps {
@@ -145,6 +146,7 @@ export function AgentRowActions({
           }
         />
         <DropdownMenuContent align="end" className="w-auto">
+          <CopyIdMenuItem id={agent.id} />
           {showStop && (
             <DropdownMenuItem
               onClick={() => setConfirmCancel(true)}

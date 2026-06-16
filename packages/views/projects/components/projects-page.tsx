@@ -41,6 +41,7 @@ import { memberListOptions } from "@multica/core/workspace/queries";
 import { useModalStore } from "@multica/core/modals";
 import { AppLink, useRowLink } from "../../navigation";
 import { ActorAvatar } from "../../common/actor-avatar";
+import { CopyIdMenuItem } from "../../common/copy-id-menu-item";
 import { FILTER_ITEM_CLASS, HoverCheck } from "../../common/hover-check";
 import { Skeleton } from "@multica/ui/components/ui/skeleton";
 import { Button } from "@multica/ui/components/ui/button";
@@ -246,6 +247,7 @@ function ProjectRowActions({
           }
         />
         <DropdownMenuContent align="end" className="w-44">
+          <CopyIdMenuItem id={project.id} />
           <DropdownMenuItem onClick={togglePin}>
             {pinned ? (
               <PinOff className="size-3.5" />

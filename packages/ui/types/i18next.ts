@@ -24,6 +24,7 @@ declare global {
       copy_code: string;
       plain_text: string;
       copy_id_tooltip: string;
+      copy_id_action: string;
       id_copied: string;
     };
   }

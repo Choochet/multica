@@ -270,8 +270,6 @@
     "cancel_edit": "キャンセル",
     "copy_action": "コピー",
     "copied_toast": "コピーしました",
-    "copy_id_action": "ID をコピー",
-    "copy_id_toast": "コメント ID をコピーしました",
     "edit_action": "編集",
     "update_failed": "コメントを更新できませんでした",
     "send_failed": "コメントを送信できませんでした",

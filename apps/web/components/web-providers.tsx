@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
+import { useMemo } from "react";
 import { CoreProvider } from "@multica/core/platform";
 import { createBrowserCookieLocaleAdapter } from "@multica/core/i18n/browser";
 import type { LocaleResources, SupportedLocale } from "@multica/core/i18n";
@@ -11,7 +11,7 @@ import {
   setLoggedInCookie,
   clearLoggedInCookie,
 } from "@/features/auth/auth-cookie";
-import { PageviewTracker } from "./pageview-tracker";
+import { detectWebOS } from "@/platform/client-os";
 
 // Legacy token in localStorage → keep this session in token mode so users who
 // logged in before the cookie-auth migration stay authed. They migrate to
@@ -57,7 +57,7 @@ export function WebProviders({
   // Stable identity reference so downstream effects keyed on it don't see a
   // new object on every parent render.
   const identity = useMemo(
-    () => ({ platform: "web", version: WEB_VERSION }),
+    () => ({ platform: "web", version: WEB_VERSION, os: detectWebOS() }),
     [],
   );
   const localeAdapter = useMemo(() => createBrowserCookieLocaleAdapter(), []);
@@ -82,11 +82,6 @@ export function WebProviders({
       resources={resources}
       localeAdapter={localeAdapter}
     >
-      {/* Suspense boundary is required by Next.js for useSearchParams in
-          a client component mounted this high in the tree. */}
-      <Suspense fallback={null}>
-        <PageviewTracker />
-      </Suspense>
       <WebNavigationProvider>{children}</WebNavigationProvider>
     </CoreProvider>
   );

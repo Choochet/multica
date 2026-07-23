@@ -11,11 +11,12 @@ import {
   Copy,
   FolderOpen,
   Link2,
-  MoreHorizontal,
+  Network,
   Pin,
   PinOff,
   Plus,
   Trash2,
+  Unlink,
   UserMinus,
 } from "lucide-react";
 import type { AgentTask, Issue } from "@multica/core/types";
@@ -106,6 +107,7 @@ export function IssueActionsMenuItems({
     copyLink,
     openCreateSubIssue,
     openSetParent,
+    removeParent,
     openAddChild,
     openDeleteConfirm,
   } = actions;
@@ -280,12 +282,14 @@ export function IssueActionsMenuItems({
 
       <P.Separator />
 
-      {/* Relationship actions live under "More" — they're lower-frequency and
-          will grow (blocks, duplicates, related) as we add more relation types. */}
+      {/* Relationship actions live under "Relations" — a semantically explicit
+          label (unlike the old "More") so the first level tells you what the
+          submenu does. Holds parent/sub-issue links today, and will grow
+          (blocks, duplicates, related) as we add more relation types. */}
       <P.Sub>
         <P.SubTrigger>
-          <MoreHorizontal className="h-3.5 w-3.5" />
-          {t(($) => $.actions.more)}
+          <Network className="h-3.5 w-3.5" />
+          {t(($) => $.actions.relations)}
         </P.SubTrigger>
         <P.SubContent>
           <P.Item onClick={openCreateSubIssue}>
@@ -296,6 +300,12 @@ export function IssueActionsMenuItems({
             <ArrowUp className="h-3.5 w-3.5" />
             {t(($) => $.actions.set_parent_issue)}
           </P.Item>
+          {issue.parent_issue_id && (
+            <P.Item onClick={removeParent}>
+              <Unlink className="h-3.5 w-3.5" />
+              {t(($) => $.actions.remove_parent_issue)}
+            </P.Item>
+          )}
           <P.Item onClick={openAddChild}>
             <ArrowDown className="h-3.5 w-3.5" />
             {t(($) => $.actions.add_sub_issue)}
